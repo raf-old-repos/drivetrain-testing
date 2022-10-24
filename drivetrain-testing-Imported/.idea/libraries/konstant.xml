@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="konstant">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/konstant.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

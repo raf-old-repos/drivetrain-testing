@@ -20,10 +20,10 @@ public final class Constants {
 
     public static final int FRONT_LEFT_MOTOR = 0; 
     public static final int MIDDLE_LEFT_MOTOR = 1; 
-    public static final int BACK_LEFT_MOTOR = 3; 
-    public static final int FRONT_RIGHT_MOTOR = 4; 
-    public static final int MIDDLE_RIGHT_MOTOR = 5; 
-    public static final int BACK_RIGHT_MOTOR = 6; 
+    public static final int BACK_LEFT_MOTOR = 2;
+    public static final int FRONT_RIGHT_MOTOR = 3; 
+    public static final int MIDDLE_RIGHT_MOTOR = 4; 
+    public static final int BACK_RIGHT_MOTOR = 5; 
 
 }
 

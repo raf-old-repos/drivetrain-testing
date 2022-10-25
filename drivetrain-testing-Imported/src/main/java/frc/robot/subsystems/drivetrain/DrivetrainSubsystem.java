@@ -49,8 +49,8 @@ private final DifferentialDrive diffDrive = new DifferentialDrive(left, right);
   }
     
 
-  public void drive(double xSpeed, double ySpeed) {
-    diffDrive.tankDrive(xSpeed, ySpeed);
+  public void drive(double xSpeed, double zRotation) {
+    diffDrive.curvatureDrive(xSpeed, zRotation, true);
   }
   
 }

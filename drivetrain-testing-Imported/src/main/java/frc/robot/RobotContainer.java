@@ -21,11 +21,8 @@ import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   private final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
-
-  // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   private final XboxController m_driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 

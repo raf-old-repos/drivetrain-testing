@@ -29,14 +29,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
   private CANSparkMax backRight = new CANSparkMax(Constants.BACK_RIGHT_MOTOR, MotorType.kBrushless); 
 
   private MotorControllerGroup left = new MotorControllerGroup(frontLeft, middleLeft, backLeft); 
-  private  MotorControllerGroup right = new MotorControllerGroup(frontRight, middleRight, backRight); 
+  private MotorControllerGroup right = new MotorControllerGroup(frontRight, middleRight, backRight); 
 
-
-private final DifferentialDrive diffDrive = new DifferentialDrive(left, right);
+  private final DifferentialDrive diffDrive = new DifferentialDrive(left, right);
 
   public DrivetrainSubsystem() {
-    this.left.setInverted(false); 
-    this.right.setInverted(true); 
+    left.setInverted(false); 
+    right.setInverted(true); 
 
     frontLeft.setIdleMode(IdleMode.kBrake);
     frontRight.setIdleMode(IdleMode.kBrake);
@@ -44,13 +43,11 @@ private final DifferentialDrive diffDrive = new DifferentialDrive(left, right);
     middleRight.setIdleMode(IdleMode.kBrake);
     backLeft.setIdleMode(IdleMode.kBrake);
     backRight.setIdleMode(IdleMode.kBrake);
-
-
   }
     
 
   public void drive(double xSpeed, double zRotation) {
-    diffDrive.curvatureDrive(xSpeed, zRotation, true);
+    diffDrive.curvatureDrive(xSpeed, Constants.TURN_RATE * zRotation, true);
   }
   
 }

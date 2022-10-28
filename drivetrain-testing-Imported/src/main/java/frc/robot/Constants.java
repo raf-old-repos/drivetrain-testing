@@ -26,6 +26,8 @@ public final class Constants {
     public static final int BACK_RIGHT_MOTOR = 5; 
 
     public static final int DRIVER_CONTROLLER = 0; 
+
+    public static final double TURN_RATE = 0.5; 
 }
 
 

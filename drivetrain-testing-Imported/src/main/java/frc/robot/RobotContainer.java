@@ -21,21 +21,15 @@ import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   private final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-
-  private final XboxController m_driverController = new XboxController(0);
+  private final XboxController m_driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-
-
-
 
     m_drivetrainSubsystem.setDefaultCommand(new RunCommand(() -> {
       m_drivetrainSubsystem.drive(m_driverController.getRightY(), m_driverController.getRightX());

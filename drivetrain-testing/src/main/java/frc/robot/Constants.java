@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.SpeedController;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -15,15 +13,17 @@ import edu.wpi.first.wpilibj.SpeedController;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-
-    public static SpeedController K_TRACK_WIDTH;
-
     public static final int FRONT_LEFT_MOTOR = 0; 
     public static final int MIDDLE_LEFT_MOTOR = 1; 
-    public static final int BACK_LEFT_MOTOR = 3; 
-    public static final int FRONT_RIGHT_MOTOR = 4; 
-    public static final int MIDDLE_RIGHT_MOTOR = 5; 
-    public static final int BACK_RIGHT_MOTOR = 6; 
+    public static final int BACK_LEFT_MOTOR = 2;
+    public static final int FRONT_RIGHT_MOTOR = 3; 
+    public static final int MIDDLE_RIGHT_MOTOR = 4; 
+    public static final int BACK_RIGHT_MOTOR = 5; 
 
+    public static final int DRIVER_CONTROLLER = 0; 
+
+    public static final double TURN_RATE = 0.5; 
 }
+
+
 

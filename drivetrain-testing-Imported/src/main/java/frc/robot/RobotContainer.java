@@ -8,8 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.AutoCommand;
 import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 
 
@@ -25,6 +24,8 @@ public class RobotContainer {
   private final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
 
   private final XboxController m_driverController = new XboxController(Constants.DRIVER_CONTROLLER);
+
+  private Command m_autoCommand = new AutoCommand(m_drivetrainSubsystem); 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

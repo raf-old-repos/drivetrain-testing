@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 
 
-public class DrivetrainSubsystem extends SubsystemBase {
+public class Drivetrain extends SubsystemBase {
 
   private CANSparkMax frontLeft = new CANSparkMax(Constants.FRONT_LEFT_MOTOR, MotorType.kBrushless); 
   private CANSparkMax frontRight = new CANSparkMax(Constants.FRONT_RIGHT_MOTOR, MotorType.kBrushless);
@@ -33,7 +33,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   private final DifferentialDrive diffDrive = new DifferentialDrive(left, right);
 
-  public DrivetrainSubsystem() {
+  public Drivetrain() {
     left.setInverted(false); 
     right.setInverted(true); 
 

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import frc.robot.commands.AutoCommand;
-import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
+import frc.robot.subsystems.drivetrain.Drivetrain;
 
 
 /**
@@ -21,20 +21,20 @@ import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
-  private final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
+  private final Drivetrain m_drivetrain = new Drivetrain();
 
   private final XboxController m_driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 
-  private Command m_autoCommand = new AutoCommand(m_drivetrainSubsystem); 
+  private Command m_autoCommand = new AutoCommand(m_drivetrain); 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
 
-    m_drivetrainSubsystem.setDefaultCommand(new RunCommand(() -> {
-      m_drivetrainSubsystem.drive(m_driverController.getRightY(), m_driverController.getRightX());
-    }, m_drivetrainSubsystem));
+    m_drivetrain.setDefaultCommand(new RunCommand(() -> {
+      m_drivetrain.drive(m_driverController.getRightY(), m_driverController.getRightX());
+    }, m_drivetrain));
   }
 
   /**

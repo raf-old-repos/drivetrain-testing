@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -28,6 +29,19 @@ public final class Constants {
     public static final int DRIVER_CONTROLLER = 0; 
 
     public static final double TURN_RATE = 0.5; 
+
+
+    public static double kD = SmartDashboard.getNumber("kD", 0);
+    public static double kP = SmartDashboard.getNumber("kP", 0.001);
+    public static double kI = SmartDashboard.getNumber("kI", 0);
+
+    // drive 12 meters
+
+    public static double SET_POINT = 1;
+
+    public static double Z_ROT = 0;
+
+
 }
 
 

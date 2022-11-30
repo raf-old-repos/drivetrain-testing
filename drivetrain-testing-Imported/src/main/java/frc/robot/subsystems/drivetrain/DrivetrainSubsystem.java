@@ -13,6 +13,7 @@ import frc.robot.Constants;
 import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -20,9 +21,8 @@ import edu.wpi.first.wpilibj.SPI;
 
 public class DrivetrainSubsystem extends SubsystemBase {
 
-  private double P = Constants.kP;
-  private double I = Constants.kI;
-  private double D = Constants.kD;
+  private SparkMaxPIDController PIDControllerMiddleRight;
+  private SparkMaxPIDController PIDControllerMiddleLeft;
 
   private double target = 0;
 
@@ -58,6 +58,29 @@ public class DrivetrainSubsystem extends SubsystemBase {
     middleRight.setIdleMode(IdleMode.kBrake);
     backLeft.setIdleMode(IdleMode.kBrake);
     backRight.setIdleMode(IdleMode.kBrake);
+
+    var followRight = middleRight;
+    var followLeft = middleLeft;
+
+    frontRight.follow(followRight);
+    backRight.follow(followRight);
+
+    frontLeft.follow(followLeft);
+    backLeft.follow(followLeft);
+
+    PIDControllerMiddleLeft = middleLeft.getPIDController();
+    PIDControllerMiddleRight = middleRight.getPIDController();
+
+    PIDControllerMiddleLeft.setP(Constants.kP);
+    PIDControllerMiddleLeft.setI(Constants.kI);
+    PIDControllerMiddleLeft.setD(Constants.kD);
+
+    PIDControllerMiddleRight.setP(Constants.kP);
+    PIDControllerMiddleRight.setI(Constants.kI);
+    PIDControllerMiddleRight.setD(Constants.kD);
+
+    this.resetEncoders();
+    
   }
 
   public void drive(double xSpeed, double zRotation) {
@@ -79,7 +102,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
     this.target = target;
   }
 
-
   public double getLeftVoltage() {
     return left.get();
   }
@@ -93,11 +115,29 @@ public class DrivetrainSubsystem extends SubsystemBase {
     gyro.reset();
   }
 
-
   @Override
   public void periodic() {
     SmartDashboard.putNumber("x", gyro.getDisplacementX());
     SmartDashboard.putNumber("y", gyro.getDisplacementY());
 
+    double kP = SmartDashboard.getNumber("kP", 0.001);
+    double kI = SmartDashboard.getNumber("kI", 0);
+    double kD = SmartDashboard.getNumber("kD", 0);
+
+    this.PIDControllerMiddleLeft.setP(kP);
+    this.PIDControllerMiddleLeft.setI(kI);
+    this.PIDControllerMiddleLeft.setD(kD);
+
+    this.PIDControllerMiddleRight.setP(kP);
+    this.PIDControllerMiddleRight.setI(kI);
+    this.PIDControllerMiddleRight.setD(kD);
+
   }
+
+  public void setPosition(double displacement){
+    this.PIDControllerMiddleLeft.setReference(displacement, CANSparkMax.ControlType.kPosition);
+    this.PIDControllerMiddleRight.setReference(displacement, CANSparkMax.ControlType.kPosition);
+
+}
+
 }

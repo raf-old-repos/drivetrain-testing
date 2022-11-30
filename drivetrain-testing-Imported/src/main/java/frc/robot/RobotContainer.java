@@ -23,7 +23,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   private final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
-  private final DrivetrainCommand m_autoCommand = new DrivetrainCommand(m_drivetrainSubsystem, Constants.SET_POINT, Constants.Z_ROT);
+  private final DrivetrainCommand m_autoCommand = new DrivetrainCommand(m_drivetrainSubsystem, 2);
 
   private final XboxController m_driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 

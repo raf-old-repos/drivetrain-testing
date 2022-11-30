@@ -5,34 +5,31 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Constants;
 
-public class DrivetrainCommand extends PIDCommand {
+public class DrivetrainCommand extends CommandBase {
 
+    private DrivetrainSubsystem drivetrain;
+    private double displacement;
 
-    public DrivetrainCommand(DrivetrainSubsystem drive, double setpoint, double zRot) {
-        super(new PIDController(Constants.kP, Constants.kI, Constants.kD), 
-        drive.gyro::getDisplacementX, 
-        (setpoint + drive.gyro.getDisplacementX()), 
-        output -> {
-            drive.drive(output, zRot);
-            SmartDashboard.putNumber("output", output);
-        },
-        drive 
-        );
+    public DrivetrainCommand(DrivetrainSubsystem drivetrain, double displacement) {
 
-        var aX = drive.gyro.getWorldLinearAccelX();
-
-
-        
-
-
-        // lets go 20 meters forward woohoo
-
+        this.drivetrain = drivetrain;
+        this.displacement = displacement;
     }
 
+    @Override
+    public void execute() {
+        drivetrain.setPosition(displacement);
+    }
+
+    @Override
+    public boolean isFinished(){
+        return false;
+    }
 
 
     

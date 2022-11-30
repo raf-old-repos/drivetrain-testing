@@ -31,9 +31,9 @@ public final class Constants {
     public static final double TURN_RATE = 0.5; 
 
 
-    public static double kD = SmartDashboard.getNumber("kD", 0);
-    public static double kP = SmartDashboard.getNumber("kP", 0.001);
-    public static double kI = SmartDashboard.getNumber("kI", 0);
+    public static double kP =  0.001;
+    public static double kI = 0.0;
+    public static double kD =  0.0;
 
     // drive 12 meters
 
